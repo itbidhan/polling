@@ -25,14 +25,9 @@ module.exports = function (grunt) {
                 shorthandCompacting: true,
                 roundingPrecision: -1
             },
-            critical: {
-                files: {
-                  'templates/critical.min.css': ['templates/critical.css'],
-                }
-            },
             dist: {
                 files: {
-                  'css/main.min.css': ['css/main.css'],
+                  'core/static/css/main.min.css': ['core/static/css/main.css'],
                 }
             },
         },
@@ -43,7 +38,7 @@ module.exports = function (grunt) {
                     'bower_components/modernizr/modernizr.js',
                 ],
                 dest:'core/static/js/pre_head.js'
-            }
+            },
             post_body: {
                 src: [
                     'bower_components/jquery/dist/jquery.js',
@@ -58,11 +53,11 @@ module.exports = function (grunt) {
         },
 
         uglify: {
-            pre_close_head{
+            pre_close_head: {
                 files: {
                     'core/static/js/pre_head.min.js': 'core/static/js/pre_head.js',
                 }
-            }
+            },
             post_body: {
                 files: {
                     'core/static/js/post_body.min.js': 'core/static/js/post_body.js',
