@@ -1,0 +1,25 @@
+{
+  "name": "ssp_polling",
+  "version": "0.0.1",
+  "authors": [
+    "Scott Macdonald <scott.scotm@gmail.com>"
+  ],
+  "description": "Something for the SSP's 2016 general election campaign",
+  "keywords": [
+    "polling",
+    "socialist",
+    "information"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2"
+  }
+}

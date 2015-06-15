@@ -1,0 +1,16 @@
+{
+  "name": "ssp_polling",
+  "version": "0.0.1",
+  "description": "Something for the SSP's 2016 general election campaign",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scott Macdonald <scott.scotm@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-cssmin": "^0.12.3",
+    "grunt-contrib-uglify": "^0.9.1"
+  }
+}
