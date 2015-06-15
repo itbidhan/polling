@@ -1,0 +1,16 @@
+{% load static %}<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}FIXME: NEEDS A TITLE BLOCK{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}" />
+    <script src="{% static 'js/pre_head.min.js'"></script>
+  </head>
+  <body>
+    {% include "navbar.html" %}
+    {% block inner_title %}{% endblock %}
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+  </body>
+</html>
