@@ -76,6 +76,17 @@ module.exports = function (grunt) {
             }
         },
 
+        svgstore: {
+            options: {
+                prefix : 'shape-', // This will prefix each <g> ID
+            },
+            default: {
+                files: {
+                    'core/static/images/svg-defs.svg': ['images/*.svg', 'images/**/*.svg'],
+                }
+            }
+        },
+
         sass: {
             options: {
                 sourceMap: true,
@@ -106,8 +117,12 @@ module.exports = function (grunt) {
                 options: {
                     livereload: true
                 }
+            },
+            svg:{
+                files: ['images/*.svg','images/**/*.svg'],
+                tasks: ['svg'],
             }
-        }
+        },
     });
 
 
@@ -119,14 +134,16 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-criticalcss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-svgstore');
 
     // 3. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('javascript', ['concat', 'uglify'])
-    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'cssmin:dist']);
+    grunt.registerTask('default', ['concat', 'uglify', 'sass', 'cssmin:dist', 'svgstore']);
     grunt.registerTask('basecss', ['criticalcss', 'cssmin'])
     grunt.registerTask('images', ['imagemin']);
-    grunt.registerTask('watch-changes', ['concat', 'uglify', 'imagemin', 'sass', 'watch']);
+    grunt.registerTask('watch-changes', ['default', 'watch']);
     grunt.registerTask('js', ['concat', 'uglify']);
     grunt.registerTask('css', ['sass', 'cssmin:dist']);
+    grunt.registerTask('svg', ['svgstore']);
     grunt.registerTask('all', ['concat', 'uglify', 'sass', 'imagemin']);
 };

@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from core.views import BaseView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url('^$', BaseView.as_view())
 ]
