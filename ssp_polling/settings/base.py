@@ -6,6 +6,7 @@ from email_password import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_HOST, EMA
 
 TESTING = len(sys.argv) > 1 and sys.argv[1] == 'test'
 
+BASE_DIR = Path(os.path.dirname(os.path.dirname(__file__))).parent
 
 try:
     import psycopg2
@@ -27,8 +28,6 @@ except ImportError:
         }
     }
 
-
-BASE_DIR = Path(os.path.dirname(os.path.dirname(__file__))).parent
 
 try:
     from secrets import SECRET_KEY
@@ -82,9 +81,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'ssp_polling.urls'
-
 WSGI_APPLICATION = 'ssp_polling.wsgi.application'
-
+WSGI_APPLICATION = 'ssp_polling.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -92,13 +90,9 @@ WSGI_APPLICATION = 'ssp_polling.wsgi.application'
 LANGUAGE_CODE = 'en-gb'
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = False
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
