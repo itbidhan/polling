@@ -123,6 +123,27 @@ module.exports = function (grunt) {
                 tasks: ['svg'],
             }
         },
+
+        accessibility: {
+            options : {
+                accessibilityLevel: 'WCAG2A',
+                domElement: false,
+                force: true,
+                ignore : [
+                    'WCAG2A.Principle1.Guideline1_1.1_1_1.G73,G74',
+                    'WCAG2A.Principle2.Guideline2_4.2_4_4.H77,H78,H79,H80,H81'
+                ]
+            },
+            test : {
+                files: [{
+                    expand  : true,
+                    cwd     : 'html',
+                    src     : ['*.html'],
+                    dest    : 'reports/',
+                    ext     : '-report.txt'
+                }]
+           },
+        },
     });
 
 
@@ -135,6 +156,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-criticalcss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-svgstore');
+    grunt.loadNpmTasks('grunt-accessibility');
 
     // 3. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('javascript', ['concat', 'uglify'])
