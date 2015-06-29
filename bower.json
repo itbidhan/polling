@@ -21,6 +21,9 @@
   ],
   "dependencies": {
     "foundation": "~5.5.2",
-    "css-loading-spinners": "~1.0.0"
+    "css-loading-spinners": "~1.0.0",
+  },
+  "devDependencies": {
+    "livereload-js": "~2.2.1"
   }
 }

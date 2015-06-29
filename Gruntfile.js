@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
     require('time-grunt')(grunt);
+    require('jit-grunt')(grunt);
+
     //require('jit-grunt')(grunt);
 
     // 1. All configuration goes here
@@ -45,7 +47,9 @@ module.exports = function (grunt) {
                     'bower_components/jquery-placeholder/jquery.placeholder.js',
                     'bower_components/jquery.cookie/jquery.cookie.js',
                     'bower_components/fastclick/lib/fastclick.js',
-                    'bower_components/foundation/js/foundation.js', 
+                    'bower_components/foundation/js/foundation.js',
+                    'bower_components/livereload-js/dist/livereload.js',
+                    'js/captions.js',
                     'js/activate_foundation.js',
                 ],
                 dest: 'core/static/js/post_body.js'
@@ -79,6 +83,10 @@ module.exports = function (grunt) {
         svgstore: {
             options: {
                 prefix : 'shape-', // This will prefix each <g> ID
+                svg: {
+                    style:"width:0;height:0;visibility:hidden;",
+                },
+                includedemo: true,
             },
             default: {
                 files: {
@@ -162,10 +170,10 @@ module.exports = function (grunt) {
     grunt.registerTask('javascript', ['concat', 'uglify'])
     grunt.registerTask('default', ['concat', 'uglify', 'sass', 'cssmin:dist', 'svgstore']);
     grunt.registerTask('basecss', ['criticalcss', 'cssmin'])
-    grunt.registerTask('images', ['imagemin']);
     grunt.registerTask('watch-changes', ['default', 'watch']);
     grunt.registerTask('js', ['concat', 'uglify']);
     grunt.registerTask('css', ['sass', 'cssmin:dist']);
     grunt.registerTask('svg', ['svgstore']);
+    grunt.registerTask('images', ['imagemin', 'svg']);
     grunt.registerTask('all', ['concat', 'uglify', 'sass', 'imagemin']);
 };
