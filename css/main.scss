@@ -6,42 +6,123 @@
 // Behold, here are all the Foundation components.
 @import "settings";
 @import "foundation/components/grid";
-@import "foundation/components/accordion";
-@import "foundation/components/alert-boxes";
-@import "foundation/components/breadcrumbs";
-@import "foundation/components/buttons";
-@import "foundation/components/clearing";
-@import "foundation/components/dropdown";
-@import "foundation/components/dropdown-buttons";
+// @import "foundation/components/accordion";
+// @import "foundation/components/alert-boxes";
+// @import "foundation/components/breadcrumbs";
+// @import "foundation/components/buttons";
+// @import "foundation/components/clearing";
+// @import "foundation/components/dropdown";
+// @import "foundation/components/dropdown-buttons";
 @import "foundation/components/forms";
-@import "foundation/components/inline-lists";
-@import "foundation/components/pagination";
+// @import "foundation/components/inline-lists";
+// @import "foundation/components/pagination";
 @import "foundation/components/panels";
-@import "foundation/components/reveal";
-@import "foundation/components/split-buttons";
-@import "foundation/components/tables";
-@import "foundation/components/top-bar";
-@import "foundation/components/type";
-@import "foundation/components/visibility";
-@import "foundation/components/block-grid";
-@import "foundation/components/button-groups";
-@import "foundation/components/flex-video";
-@import "foundation/components/icon-bar";
-@import "foundation/components/joyride";
-@import "foundation/components/keystrokes";
-@import "foundation/components/labels";
-@import "foundation/components/magellan";
-@import "foundation/components/orbit";
-@import "foundation/components/pricing-tables";
-@import "foundation/components/progress-bars";
-@import "foundation/components/range-slider";
-@import "foundation/components/side-nav";
-@import "foundation/components/sub-nav";
-@import "foundation/components/switches";
-@import "foundation/components/tabs";
-@import "foundation/components/thumbs";
-@import "foundation/components/tooltips";
-@import "foundation/components/offcanvas";
+// @import "foundation/components/reveal";
+// @import "foundation/components/split-buttons";
+// @import "foundation/components/tables";
+// @import "foundation/components/top-bar";
+// @import "foundation/components/type";
+// @import "foundation/components/visibility";
+// @import "foundation/components/block-grid";
+// @import "foundation/components/button-groups";
+// @import "foundation/components/flex-video";
+// @import "foundation/components/icon-bar";
+// @import "foundation/components/joyride";
+// @import "foundation/components/keystrokes";
+// @import "foundation/components/labels";
+// @import "foundation/components/magellan";
+// @import "foundation/components/orbit";
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/range-slider";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switches";
+// @import "foundation/components/tabs";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/offcanvas";
+
+// Custom colours
+$peach: #f6ddc9;
+$lilac: #e0cfdf;
+
+$ballot-dimensions:90px;
+
+.svgicon {
+  display: inline-block;
+  width: $ballot-dimensions;
+  height: $ballot-dimensions;
+}
+
+@mixin ballot_paper($bg){
+  @include panel($bg:$bg);
+  hr {
+    border: solid #333;
+    border-width: 1px 0 0;
+    margin: 0.5rem 0 0.5rem;
+  }
+  div{
+    height: $ballot-dimensions;
+  }
+  div:nth-child(2){
+    top: 30%;
+    p{
+     font-size: 24px;
+    }
+  }
+  div:last-child{
+    div{
+      border: solid #333 1px;
+      width: $ballot-dimensions;
+      float:right;
+    }
+  }
+}
+
+.mainlogo{
+  img{
+  text-align: center;
+  }
+}
+
+.constituency_panel{
+  @include ballot_paper($bg:$lilac);
+}
+
+.regional_panel{
+  @include ballot_paper($bg:$peach);
+}
+
+$effeckt-caption-transition-duration: 500ms !default;
+
+.effeckt-caption {
+  position: relative;
+
+  img {
+    transition: $effeckt-caption-transition-duration;
+  }
+
+  figcaption {
+    position: absolute;
+    transition: $effeckt-caption-transition-duration;
+    width: 100%;
+  }
+
+  figcaption {
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    figcaption {
+      opacity: 1;
+    }
+  }
+}
 
 // This would make the large grid function like a print grid
 @media print {
@@ -113,8 +194,3 @@ tr {
   margin-top: .5rem; // demo only - don't use this
 }
 
-.svgicon {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-}
